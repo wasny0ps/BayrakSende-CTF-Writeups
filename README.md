@@ -1,4 +1,4 @@
-# TIMTAL-CTF-2022-Writeups
+# TIMTAL-CTF-Writeups
 
 | Banner | Write Up | Difficulity | OS | Key Field |
 | --- | --- | --- | --- | --- |
