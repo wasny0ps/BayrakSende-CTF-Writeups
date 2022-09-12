@@ -46,4 +46,23 @@ Now, we are in **profile.php** so we must connect to MetaMask wallet in ```Conne
 
 Click on the continue button in notification which came from the MetaMask plugin and connect the wallet.
 <img src="https://miro.medium.com/max/324/1*iSGZL5xkYdboGBayYxPp-g.png">
+<img src="https://miro.medium.com/max/324/1*HMWfoUzhJgXDNYCxZyoxTA.png">
+<img src="https://miro.medium.com/max/432/1*H_3cNehv_zVhidqJyZhaOw.png">
 
+As you can see, there is an NFT named My Favorite Item at the bottom left and it had added to the wishlist in profile.php.
+When I clicked the buy button, the website directed me to **item.php** page.
+<img src="https://miro.medium.com/max/630/1*KQ-EKhtkQMBLv-OVqFQ4dg.png">
+
+After this stage, switch to Rinkeby Test Network.
+
+<img src="https://miro.medium.com/max/309/1*Kcpuegw5u2UoUlDV-XjAOw.png">
+
+When click the Buy Now button, this notification met us.
+
+<img src="https://miro.medium.com/max/300/1*MQBFWKs3WfVFjU4hjr6D6g.png">
+
+As you understood from this notification, we can’t afford it. At this moment, the creative side of the challenge has begun.If you can’t afford something and have to buy it, you have two options. The first alternative is to steal that product; The second choice is to bring the product to a size you can afford. We will apply the second option. In other words, we will buy lower the price of the selected NFT.
+
+Primarily, we need to get free test eth at https://faucets.chain.link/rinkeby to use on rinkby testnet to our wallet. (For the test eth network, sites such as https://rinkebyfaucet.com/ or https://faucet.rinkeby.io/ can be preferred.)
+
+Blockchain technologies are used in all purchases on Web3 sensitive sites. In this case, all purchases are recorded and controlled in the smart contracts within the blockchain system. In this challenge, NFT is controlled by a smart contract as we will be making a purchase. Based on this information, the first thing to do is to find the contract address of this NFT.Looking at the scripts of the page, an object named “web3” was created using the Web3 library, unlike other js.
