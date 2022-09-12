@@ -32,3 +32,11 @@ Listen the network with BurpSuite and log in. Authentication page welcome us.
 
 Check network and find **wasny1234@gmail.com** which is wasny's email address.
 <img src="https://miro.medium.com/max/630/1*M-O6ba1VgJN6DWwyRUvZdQ.png">
+
+You must change this email address with your email address in inspector section and clicked the ```Send Again``` button.Enter the code sent to you.
+
+<img src="https://miro.medium.com/max/379/1*NHxwaC-Elc4jpLoK5Y9acA.png">
+<img src="https://miro.medium.com/max/396/1*MAGlDVeREElj0F4A-EH6Lw.png">
+
+If you have received this message, you must set MetaMask in your browser. https://metamask.io/
+<img src="https://miro.medium.com/max/436/1*Im5ugHGBxJwyHWZgu-Zhew.png">
