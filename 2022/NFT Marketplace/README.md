@@ -346,3 +346,9 @@ Subject                         :
 Creator                         : 
 ```
 In the keywords, there is hash encoded with base64. Let’s decode it and get the flag.
+
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/NFT%20Marketplace/img/flag.png">
+
+> FLAG{opportunist_web3hacker!}
+
+**_by wasny0ps_**
