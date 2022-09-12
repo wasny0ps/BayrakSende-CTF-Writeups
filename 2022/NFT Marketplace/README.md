@@ -65,4 +65,186 @@ As you understood from this notification, we can’t afford it. At this moment, 
 
 Primarily, we need to get free test eth at https://faucets.chain.link/rinkeby to use on rinkby testnet to our wallet. (For the test eth network, sites such as https://rinkebyfaucet.com/ or https://faucet.rinkeby.io/ can be preferred.)
 
-Blockchain technologies are used in all purchases on Web3 sensitive sites. In this case, all purchases are recorded and controlled in the smart contracts within the blockchain system. In this challenge, NFT is controlled by a smart contract as we will be making a purchase. Based on this information, the first thing to do is to find the contract address of this NFT.Looking at the scripts of the page, an object named “web3” was created using the Web3 library, unlike other js.
+Blockchain technologies are used in all purchases on Web3 sensitive sites. In this case, all purchases are recorded and controlled in the smart contracts within the blockchain system. In this challenge, NFT is controlled by a smart contract as we will be making a purchase. Based on this information, the first thing to do is to find the contract address of this NFT.Looking at the scripts of the page, an object named “web3” was created using the **Web3** library, unlike other js.
+
+```js
+<script type="text/javascript">
+            window.onload=check();
+
+            function check(argument) {
+
+
+                /*// SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
+
+interface Buyer {
+  function price() external view returns (uint);
+}
+
+contract Shop {
+  uint public price = 100;
+  bool public isSold;
+
+  function buy() public {
+    Buyer _buyer = Buyer(msg.sender);
+
+    if (_buyer.price() >= price && !isSold) {
+      isSold = true;
+      price = _buyer.price();
+    }
+  }
+}*/
+
+var contract;
+web3 = new Web3(web3.currentProvider);
+
+var address="0xd9145CCE52D386f254917e481eB44e9943F39138";
+var abi=[
+{
+    "inputs": [],
+    "name": "buy",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+},
+{
+    "inputs": [],
+    "name": "isSold",
+    "outputs": [
+    {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+    }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+},
+{
+    "inputs": [],
+    "name": "price",
+    "outputs": [
+    {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+    }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+}
+];
+
+
+contract= new web3.eth.Contract(abi,address);
+contract.methods.price().call().then(function (price) {
+    $("#price").html(price+" ETH");
+    contract.methods.isSold().call().then(function (answer) {
+        if (answer==true) 
+        {
+                        window.open("https://siberguvenliklisesi.com/timtalmarketplace/avatar.php","_self");
+        }
+    })
+})
+}
+
+
+
+function buy() {
+
+    var contract;
+    web3 = new Web3(web3.currentProvider);
+
+    var address="0xd9145CCE52D386f254917e481eB44e9943F39138";
+    var abi=[
+    {
+        "inputs": [],
+        "name": "buy",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "isSold",
+        "outputs": [
+        {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "price",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+    ];
+
+
+    contract= new web3.eth.Contract(abi,address);
+
+    web3.eth.getAccounts().then(function(accounts){
+        var acc = accounts[0];
+        return contract.methods.buy().send({from: acc});
+    })
+}
+</script>
+```
+This script clearly shows that we have a contract which address is **_0xbc9AdC8Dd14e89BE085f76a62F289cEb97D9f937_**. Apart from that, another clue as substantial as the contract address is the contract’s ABI.
+ABI (Application Binary Interface) in the context of computer science is an interface between two program modules, often between operating systems and user programs. More about ABI.
+The smart contract(solidity) codes added as a comment line to the source part of the page also confirm the information in the ABI.
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
+
+interface Buyer {
+  function price() external view returns (uint);
+}
+
+contract Shop {
+  uint public price = 100;
+  bool public isSold;
+
+  function buy() public {
+    Buyer _buyer = Buyer(msg.sender);
+
+    if (_buyer.price() >= price && !isSold) {
+      isSold = true;
+      price = _buyer.price();
+    }
+  }
+}
+```
+To Explain the code shortly, the expression pragma solidity ^0.6.0 indicates that this contract will be compilable in versions **0.6.0 and higher**.
+Afterwards, we have an interface whose name is Buyer and it controls the price variable, which is public at the same time its value is 100. And we have a shop contract and there is a public bool variable called **isSold**, it checks the status of the item. Subsequently, an object named _buyer belonging to the **_Buyer_** interface is defined. Finally, there is if control. If the quantity sent to the contract for the NFT is greater than or equal to the specified price and the item is not sold, the **isSold** variable is set to true and the price variable is equal to the sent quantity.
+
+If look carefully, you can see that if the **isSolid** variable’s value comes true, website directed us **avatar.php** page.
+
+```solidity
+contract= new web3.eth.Contract(abi,address);
+contract.methods.price().call().then(function (price) {
+    $("#price").html(price+" ETH");
+    contract.methods.isSold().call().then(function (answer) {
+        if (answer==true) 
+        {
+                        window.open("https://siberguvenliklisesi.com/timtalmarketplace/avatar.php","_self");
+        }
+    })
+})
+```
+Now we know what to do. We have to change the value of isSold variable to true and manipulate the price of NFT. But how?
+In the contract, the Buyer interface is called two times. In the first call, we will use for a bypass this requirement. In the second call, we will decrease the price which we can afford it.
+Let’s transfer this code to EVM(Ethereum Virtual Machine) to use in attack code. 
