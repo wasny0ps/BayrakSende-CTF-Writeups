@@ -40,3 +40,10 @@ You must change this email address with your email address in inspector section 
 
 If you have received this message, you must set MetaMask in your browser. https://metamask.io/
 <img src="https://miro.medium.com/max/436/1*Im5ugHGBxJwyHWZgu-Zhew.png">
+
+Now, we are in **profile.php** so we must connect to MetaMask wallet in ```Connect Wallet``` button.
+<img src="https://miro.medium.com/max/630/1*B_Dys9i-qAK_yDU9Vsf0ow.png">
+
+Click on the continue button in notification which came from the MetaMask plugin and connect the wallet.
+<img src="https://miro.medium.com/max/324/1*iSGZL5xkYdboGBayYxPp-g.png">
+
