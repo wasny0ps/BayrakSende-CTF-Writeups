@@ -85,6 +85,6 @@ When I look at the third images's code at source code of page, I found a hash in
 
 Decode with Base64 and get the flag.
 
-<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/flag.png" height="500">
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/flag.png">
 
 **_by wasny0ps_**
