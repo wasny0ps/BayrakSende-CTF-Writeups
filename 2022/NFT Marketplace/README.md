@@ -1,4 +1,4 @@
-<img src="https://miro.medium.com/max/630/1*x0pAvH_cWU8VaBmxAe7T7w.png">
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/NFT%20Marketplace/img/main.png">
 
 ## Exploration
 In the first step, click the login button and look at the ```source code``` on the login page. Then find the username as **wasny** in the comment code.
