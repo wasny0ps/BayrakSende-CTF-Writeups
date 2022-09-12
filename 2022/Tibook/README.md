@@ -73,4 +73,18 @@ If we go back to our target code, the following condition should be fulfilled in
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/login.png" height="500">
 
 And we are in.
+
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/profile.png" height="500">
+
+When I look at the third images's code at source code of page, I found a hash in alt attribute.
+```html
+<img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&amp;h=500&amp;fit=crop" class="gallery-image" alt="RkxBR3sjbmV3cGxhY2VfVGlCb29vaz8kfQ==">
+
+```
+> RkxBR3sjbmV3cGxhY2VfVGlCb29vaz8kfQ==
+
+Decode with Base64 and get the flag.
+
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/flag.png" height="500">
+
+**_by wasny0ps_**
