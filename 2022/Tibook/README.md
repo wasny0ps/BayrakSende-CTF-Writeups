@@ -69,4 +69,8 @@ After long researches, I found a vulnerability which we can exploit it. There is
 > PHP Object Injection is an application level vulnerability that could allow an attacker to perform different kinds of malicious attacks, such as Code Injection, SQL Injection, Path Traversal and Application Denial of Service, depending on the context. The vulnerability occurs when user-supplied input is not properly sanitized before being passed to the unserialize() PHP function. Since PHP allows object serialization, attackers could pass ad-hoc serialized strings to a vulnerable unserialize() call, resulting in an arbitrary PHP object(s) injection into the application scope.
 
 If we go back to our target code, the following condition should be fulfilled in order to continue: **$username** variable resulting from subtracting 1337 from “username” variable is equal to “ADMIN” text string because of in PHP, the result of comparing a text string with a 0 integer value is TRUE, therefore the condition shall be fulfilled if “username” is not a string anymore and becomes a integer of 1337 (1337 – 1337 = 0) value.
-<img src="<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/login.png" height="500">">
+
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/login.png" height="500">
+
+And we are in.
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/profile.png" height="500">
