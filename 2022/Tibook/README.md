@@ -87,4 +87,6 @@ Decode with Base64 and get the flag.
 
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/Tibook/img/flag.png">
 
+> FLAG{#newplace_TiBoook?$}
+
 **_by wasny0ps_**
