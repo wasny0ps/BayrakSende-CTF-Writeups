@@ -61,4 +61,10 @@ Go to login.php page and research the code.
 					<button type="submit" class="btn btn-primary">Login</button>
 </form>
 ```
-From 
+Based on the source code we found in the very secret directory, the ```pass``` variable must be different from "240610708" in order to enter, and the md5 encrypted hash values of the pass and password variables must be the **same**. I set the value of 1 to both the pass and password variables and entered the username as **admin** and logged in.
+
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/wasny.png">
+
+Decode this code with Base64 and get the flag.
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/flag.png">
+> FLAG{getwellsoon+_wasy}
