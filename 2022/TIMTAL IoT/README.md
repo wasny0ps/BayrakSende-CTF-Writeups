@@ -46,4 +46,19 @@ else
 		echo "Wrong username";
 }
 ```
-Go to login.php page.
+Go to login.php page and research the code.
+```html
+<form id="login-form" name="login-form" method="post">
+					<div class="mb-3">
+						<label class="form-label">Username</label>
+						<input type="text" id="username" name="username" class="form-control"required>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Password</label>
+						<input type="password" id="password" name="password" class="form-control"required>
+					</div>
+					<input type="hidden" id="pass" name="pass" value="240610708">
+					<button type="submit" class="btn btn-primary">Login</button>
+</form>
+```
+From 
