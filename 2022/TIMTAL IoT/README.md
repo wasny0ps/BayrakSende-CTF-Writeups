@@ -10,3 +10,6 @@ Looking at robots.txt and there is hex code.
 Decode it.
 
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/hex.png">
+
+Let's go to /verysecret/ directory.
+<img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/secret.png">
