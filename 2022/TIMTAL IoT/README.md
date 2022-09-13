@@ -66,5 +66,8 @@ Based on the source code we found in the very secret directory, the ```pass``` v
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/wasny.png">
 
 Decode this code with Base64 and get the flag.
+
 <img src="https://github.com/wasny0ps/TIMTAL-CTF-Writeups/blob/main/2022/TIMTAL%20IoT/img/flag.png">
 > FLAG{getwellsoon+_wasy}
+
+**_by wasny0ps_**
